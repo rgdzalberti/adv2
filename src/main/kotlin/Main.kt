@@ -40,6 +40,16 @@ fun main() {
     var result = horizontal * depth
     println(result)
 
+    //Parte 2
+
+    var aim : Int = 0
+
+    aim = depth
+
+    for (i in 0 until forwardNumbers.size) { aim = aim * forwardNumbers[i] }
+    //forwardNumbers.forEach {aim = it * aim}
+    println(aim)
+
 
 
 }
