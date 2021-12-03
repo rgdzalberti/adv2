@@ -43,13 +43,18 @@ fun main() {
     //Parte 2
 
     var aim : Int = 0
+    horizontal = 0
+    depth = 0
 
-    aim = depth
-
-    for (i in 0 until forwardNumbers.size) { aim = aim * forwardNumbers[i] }
-    //forwardNumbers.forEach {aim = it * aim}
+    file.forEachLine {
+        when{
+            it.contains("forward") -> {horizontal = horizontal + it.removeRange(0,8).toInt(); if (depth != 0) {aim = aim * it.removeRange(0,8).toInt()  }}
+            it.contains("up") -> {aim = aim - it.removeRange(0,3).toInt(); depth = depth - it.removeRange(0,3).toInt() }
+            it.contains("down") -> {aim = aim + it.removeRange(0,5).toInt(); depth = depth + it.removeRange(0,5).toInt() }
+        }
+    }
+    aim = horizontal * depth
     println(aim)
-
 
 
 }
