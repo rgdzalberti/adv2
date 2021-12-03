@@ -46,11 +46,12 @@ fun main() {
     horizontal = 0
     depth = 0
 
+    //Con un algoritmo parecido a este de abajo podría haber hecho la parte 1 en 80% menos de líneas pero no se me ha ocurrido antes
     file.forEachLine {
         when{
-            it.contains("forward") -> {horizontal = horizontal + it.removeRange(0,8).toInt(); if (depth != 0) {aim = aim * it.removeRange(0,8).toInt()  }}
-            it.contains("up") -> {aim = aim - it.removeRange(0,3).toInt(); depth = depth - it.removeRange(0,3).toInt() }
-            it.contains("down") -> {aim = aim + it.removeRange(0,5).toInt(); depth = depth + it.removeRange(0,5).toInt() }
+            it.contains("forward") -> {horizontal = horizontal + it.removeRange(0,8).toInt(); if (aim != 0) {depth = depth + aim * it.removeRange(0,8).toInt()  }}
+            it.contains("up") -> {aim = aim - it.removeRange(0,3).toInt()}
+            it.contains("down") -> {aim = aim + it.removeRange(0,5).toInt() }
         }
     }
     aim = horizontal * depth
